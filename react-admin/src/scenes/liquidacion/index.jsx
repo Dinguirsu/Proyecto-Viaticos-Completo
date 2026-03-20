@@ -48,7 +48,6 @@ const Liquidacion = () => {
   }, []);
 
   const handleFormSubmit = (values) => {
-    console.log(values);
   };
 
   return (
