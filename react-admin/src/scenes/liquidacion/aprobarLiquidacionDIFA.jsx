@@ -97,7 +97,6 @@ const DashboardLiquidaciones = () => {
       const resp = await fetchArchivosLiquidacion(row.NumeroLiquidacion);
       const lista = Array.isArray(resp) ? resp : (resp?.data || []);
       setArchivos(Array.isArray(lista) ? lista : []);
-      console.log(archivos);
 
       // auto seleccionar el primero y cargar blob
       if (lista?.length) {

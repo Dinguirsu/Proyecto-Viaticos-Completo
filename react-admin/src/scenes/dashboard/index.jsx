@@ -59,7 +59,6 @@ const Dashboard = () => {
   }, []);
 
   const handleLiquidar = (anticipo) => {
-    console.log(anticipo);
     navigate('/liquidacion', { state: { anticipo } });
   };
 

@@ -136,7 +136,6 @@ const Consultas = () => {
     try {
       const response = await api.get(`/anticipos/obtenerAnticipoParaLiquidar`);
       setliquidaciones(response.data);
-      console.log(response.data);
       setError(null);
     } catch (e) {
       console.error("Error al obtener liquidaciones:", e);

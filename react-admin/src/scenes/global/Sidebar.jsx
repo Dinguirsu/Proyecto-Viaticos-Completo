@@ -31,6 +31,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const perfil = useSelector((state) => state.empleado.perfil);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -39,7 +40,9 @@ const Sidebar = () => {
   // Soportar tanto nombres con mayúscula como minúscula por si el token cambió
   const tipoCargo = user?.tipoEmpleado;
   const codigoCargo = user?.codigoCargo;
-
+  const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+    perfil?.perfil?.Empleado || "Usuario",
+  )}&background=1e40af&color=fff`;
 
   return (
     <Box
@@ -79,9 +82,6 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINISTRADOR
-                </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -91,13 +91,21 @@ const Sidebar = () => {
 
           {!isCollapsed && (
             <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
+            <Box textAlign="center" p={1} mt={1}>
+                <Typography
+                  variant="h1"
+                  color={colors.grey[100]}
+                  fontWeight="bold"
+                >
+                  {perfil?.perfil?.Empleado?.toUpperCase()}
+                </Typography>
+              </Box>
+
+              <Box display="flex" justifyContent="center">
                 <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={`../../assets/user.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  src={avatarUrl}
+                  alt="avatar"
+                  style={{ borderRadius: "50%", width: 100, height: 100 }}
                 />
               </Box>
               <Box textAlign="center">
@@ -108,9 +116,6 @@ const Sidebar = () => {
                   sx={{ m: "10px 0 0 0" }}
                 >
                   {/* Aquí podrías mostrar user.Nombre si lo tienes */}
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
                 </Typography>
               </Box>
             </Box>

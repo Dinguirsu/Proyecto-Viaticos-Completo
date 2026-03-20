@@ -598,8 +598,6 @@ export const GetCodigoZonaViatico = async (NombrePais) => {
 export const GetMontoViaticoLempiras = async (data) => {
   try {
     if (!data || typeof data !== "object") return null;
-
-    console.log(data);
     const response = await api.get(`/anticipos/obtenerMontoViaticoLempiras`, { params: data });
     return response?.data?.[0]?.Monto ?? null;
   } catch (error) {
