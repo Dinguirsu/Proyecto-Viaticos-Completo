@@ -332,8 +332,6 @@ export const getAnticiposByIDEmpleadoConsultas = async (req, res) => {
       req.body?.codigoEmpleado
     );
 
-    console.log(codigoEmpleado);
-
     if (!Number.isInteger(codigoEmpleado) || codigoEmpleado <= 0) {
       return res.status(400).json({ message: "Código de empleado inválido o ausente." });
     }
@@ -391,8 +389,6 @@ export const getAnticiposByIDEmpleado = async (req, res) => {
       req.query?.codigoEmpleado ??
       req.body?.codigoEmpleado
     );
-
-    console.log(codigoEmpleado);
 
     if (!Number.isInteger(codigoEmpleado) || codigoEmpleado <= 0) {
       return res.status(400).json({ message: "Código de empleado inválido o ausente." });
