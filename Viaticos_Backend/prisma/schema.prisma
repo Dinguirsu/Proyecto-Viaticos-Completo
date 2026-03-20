@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+/*datasource db {
+  provider = "sqlserver"
+  url      = "sqlserver://srv-bd.cntlocal.gob.hn:1433;database=SIBIN;user=eduardo.rosales;password=WBt5#P9R*itAm2;trustServerCertificate=true;"
+}*/
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model View_EmpleadosCH {
+  CodigoEmpleado Int      @id
+  CodigoCCHH     Int?
+  Empleado       String?
+  UsuarioSITAE   String?
+  CodigoCargo    Int?
+  Cargo          String?
+  TipoCargo      Int?
+  CodigoArea     Int?
+  Area           String?
+  EstaActivo     Boolean?
+  //Email          String?
+
+  @@map("View_EmpleadosCH")
+}
